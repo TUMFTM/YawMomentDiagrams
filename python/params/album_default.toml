@@ -1,0 +1,14 @@
+# # This file configures everything related to the variety of plots which will be generated
+
+# configuration of simulation
+# definition of the desired speed values for the sim
+v_min = 20  # mps
+v_max = 80  # mps
+v_steps = 4  # integer
+
+# definition of the desired long. acceleration values for the sim
+ax_min = -5  # mps2
+ax_max = 5  # mps2
+ax_steps = 3  # integer
+
+

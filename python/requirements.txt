@@ -1,0 +1,7 @@
+matplotlib==3.3.3
+numpy==1.19.5
+plotly==4.14.3
+scipy==1.6.0
+threadpoolctl==2.1.0
+toml==0.10.2
+

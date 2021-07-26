@@ -1,0 +1,23 @@
+# # This file configures everything related to the variety of plots which will be generated
+
+# model selection
+model = 2 # 1=DoubleTrackModel, 2=SingleTrackModel
+
+# sim iterations
+n_sim = 5000
+
+#length of the vector used to calculate the mean which will be returned as output
+n_eval = 500
+
+# velocity controller params (dt, max, min, kp, kd, ki)
+velPIDparams = [ 0.002, 8000.0, -8000.0, 1000.0, 0.0, 1000.0 ]
+
+#yaw moment controller params (dt, max, min, kp, kd, ki)
+ymPIDparams = [ 0.002, 50000.0, -50000.0, 400000.0, 100000.0, 1000000.0 ]
+
+#brake pressure controller params (dt, max, min, kp, kd, ki)
+brakePIDparams = [ 0.002, 5000000.0, -5000000.0, 4000000.0, 0.0, 5000000.0 ]
+
+# banking angle in degree (negative values mean banking for left hand corners)
+banking = 0
+

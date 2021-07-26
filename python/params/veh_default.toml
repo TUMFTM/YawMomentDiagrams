@@ -1,0 +1,19 @@
+# # This file configures everything related to additional vehicle parameters
+
+# Brake Balance (1=100% brake pressure on front axle, 0=100% brake pressure on rear axle)
+brake_balance = 1.0
+
+#Tire Scaling Values
+muex = 1
+muey = 1
+
+# Torque Vectoring Factor
+tv = 0
+
+# Here you can change parameter for this simulation inside the TU_vehicle_dynamics module via the set_parameter method
+# rules: First dictionary entry must be called variable*, followed by an entry value*. There is no limit on the count.
+# the sequence variable*, value*, variable*, value*... must be followed. The variable name must be a valid parameter
+# in the TUM_vehicle_dynamics package.
+[VEH]
+# variable1 = "VEH__VehicleData__m_Vehicle_kg"
+# value1 = 1400

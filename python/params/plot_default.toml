@@ -1,0 +1,25 @@
+# # This file configures everything related to the appearance and content of the generated plots
+
+
+# definition of the desired delta range used in the simulation of each plot
+# (Note: will always be mirrored into negative)
+delta_max = 0.15  # rad (Suggestion:  Based on the tire model used, this value should be sufficiently
+# high to cover all peaks in the Fy-slipangle diagram. Note: A too-high value will not invalidate
+# the results but will lead to a more coarse diagram. A too-low value will mean that the diagrams
+# will not be complete because not all points in the maneuvering space can be reached.)
+delta_steps = 7  # integer
+
+# definition of the desired beta range used in the simulation of each plot
+# (Note: will always be mirrored into negative)
+beta_max = 0.13  # rad (Same tip as for the delta_max value)
+beta_steps = 15  # integer
+
+# axis limits for plot generation
+x_lim = 40  # [m/s^2]
+y_lim = 40000  # [Nm]
+
+# plot format and resolution
+frmt = 'svg'  # e.g. 'pdf', 'svg', 'jpg'...
+# call plt.gcf().canvas.get_supported_filetypes() to get info on supported filetypes
+dpi = 300
+figsz = [25, 15]
