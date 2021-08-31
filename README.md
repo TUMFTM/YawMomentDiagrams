@@ -19,7 +19,7 @@ The `Matlab/Simulink` implementation requires the [vehicle dynamics simulation r
 **Note:** The YMD Application is currently only setup for rear-wheel-driven vehicles.
 
 ## Developer
-Frederik Werner\
+[Frederik Werner](mailto:frederik.s.werner@gmail.com)\
 [Leonhard Hermansdorfer](mailto:leo.hermansdorfer@tum.de)
 
 ## Interfaces
@@ -78,6 +78,8 @@ A quick rundown on the KPIs and their sign convention (LH=left hand turn, RH=rig
 10. Stability: change of Yaw Moment in respect to body slip angle changes (positive: stable reaction to external disturbance; negative: unstable reaction to external disturbance)
 
 # References
+A quick and easy to read introduction into yaw moment diagrams is given in the [DrRacings Blog](https://drracing.wordpress.com/2015/07/20/the-joy-of-yaw-moment-diagrams/)
+
 Literature from which these algorithms are inspired from:
 ```
 @book{Milliken.1995,
@@ -89,3 +91,15 @@ Literature from which these algorithms are inspired from:
  publisher = {{SAE International}},
  isbn = {1-56091-526-9}}
 ```
+```
+@proceedings{Kang2005,
+ year = {2005},
+ title = {Implementing the Milliken Moment Method using Controlled Dynamic Simulation},
+ volume = {1916},
+ publisher = {{SAE International} and {Society of Automotive Engineers}},
+ isbn = {0-7680-1561-8},
+ series = {SAE-SP},
+ editor = {Kang, Dongsoo and Stein, Jeffrey L. and Hofmann, Robert C. and Louca, Loucas S. and Huh, Kunsoo},
+ institution = {{SAE International} and {SAE world congress}},
+ venue = {Detroit, Michigan}}
+``
