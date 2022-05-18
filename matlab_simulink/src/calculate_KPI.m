@@ -57,42 +57,42 @@ kpi_unit(19)={'control force @ straight [ay/deg]'};
 %KPI calculations
 
 %1:calc MZ_max
-kpi(1,1,inti_v,inti_a)=max(ym_table(:,:,inti_v,inti_a),[],'all');
-kpi(2,1,inti_v,inti_a)=min(ym_table(:,:,inti_v,inti_a),[],'all');
+kpi(1,1,inti_v,inti_a,inti_ba)=max(ym_table(:,:,inti_v,inti_a, inti_ba),[],'all');
+kpi(2,1,inti_v,inti_a,inti_ba)=min(ym_table(:,:,inti_v,inti_a, inti_ba),[],'all');
 
 %2:calc ay_lim
-kpi(1,2,inti_v,inti_a)=max(ay_table(:,:,inti_v,inti_a),[],'all');
-kpi(2,2,inti_v,inti_a)=min(ay_table(:,:,inti_v,inti_a),[],'all');
-[intr1, intc1]=find(ay_table(:,:,inti_v,inti_a)==kpi(1,2,inti_v,inti_a));
-[intr2, intc2]=find(ay_table(:,:,inti_v,inti_a)==kpi(2,2,inti_v,inti_a));
+kpi(1,2,inti_v,inti_a,inti_ba)=max(ay_table(:,:,inti_v,inti_a, inti_ba),[],'all');
+kpi(2,2,inti_v,inti_a,inti_ba)=min(ay_table(:,:,inti_v,inti_a, inti_ba),[],'all');
+[intr1, intc1]=find(ay_table(:,:,inti_v,inti_a, inti_ba)==kpi(1,2,inti_v,inti_a, inti_ba));
+[intr2, intc2]=find(ay_table(:,:,inti_v,inti_a, inti_ba)==kpi(2,2,inti_v,inti_a, inti_ba));
 
 %3: calc Mz@lim
-kpi(1,3,inti_v,inti_a)=ym_table(intr1, intc1, inti_v,inti_a);
-kpi(2,3,inti_v,inti_a)=ym_table(intr2, intc2, inti_v,inti_a);
+kpi(1,3,inti_v,inti_a,inti_ba)=ym_table(intr1, intc1, inti_v,inti_a,inti_ba);
+kpi(2,3,inti_v,inti_a,inti_ba)=ym_table(intr2, intc2, inti_v,inti_a,inti_ba);
 
 %4: SAf@lim
-kpi(1,4,inti_v,inti_a)=sa_f_table(intr1, intc1, inti_v,inti_a)/pi*180;
-kpi(2,4,inti_v,inti_a)=sa_f_table(intr2, intc2, inti_v,inti_a)/pi*180;
+kpi(1,4,inti_v,inti_a,inti_ba)=sa_f_table(intr1, intc1, inti_v,inti_a, inti_ba)/pi*180;
+kpi(2,4,inti_v,inti_a,inti_ba)=sa_f_table(intr2, intc2, inti_v,inti_a, inti_ba)/pi*180;
 
 %5: SAr@lim
-kpi(1,5,inti_v,inti_a)=sa_r_table(intr1, intc1, inti_v,inti_a)/pi*180;
-kpi(2,5,inti_v,inti_a)=sa_r_table(intr2, intc2, inti_v,inti_a)/pi*180;
+kpi(1,5,inti_v,inti_a,inti_ba)=sa_r_table(intr1, intc1, inti_v,inti_a, inti_ba)/pi*180;
+kpi(2,5,inti_v,inti_a,inti_ba)=sa_r_table(intr2, intc2, inti_v,inti_a, inti_ba)/pi*180;
 
 %6: SAdiff@lim
-kpi(1,6,inti_v,inti_a)=(sa_f_table(intr1, intc1, inti_v,inti_a)-sa_r_table(intr1, intc1, inti_v,inti_a))/pi*180;
-kpi(2,6,inti_v,inti_a)=(sa_f_table(intr2, intc2, inti_v,inti_a)-sa_r_table(intr2, intc2, inti_v,inti_a))/pi*180;
+kpi(1,6,inti_v,inti_a, inti_ba)=(sa_f_table(intr1, intc1, inti_v,inti_a, inti_ba)-sa_r_table(intr1, intc1, inti_v,inti_a, inti_ba))/pi*180;
+kpi(2,6,inti_v,inti_a, inti_ba)=(sa_f_table(intr2, intc2, inti_v,inti_a, inti_ba)-sa_r_table(intr2, intc2, inti_v,inti_a, inti_ba))/pi*180;
 
 %7: beta@lim
-kpi(1,7,inti_v,inti_a)=beta_range(intr1)/pi*180;
-kpi(2,7,inti_v,inti_a)=beta_range(intr2)/pi*180;
+kpi(1,7,inti_v,inti_a, inti_ba)=beta_range(intr1)/pi*180;
+kpi(2,7,inti_v,inti_a, inti_ba)=beta_range(intr2)/pi*180;
 
 %8: delta@lim
-kpi(1,8,inti_v,inti_a)=delta_range(intc1)/pi*180;
-kpi(2,8,inti_v,inti_a)=delta_range(intc2)/pi*180;
+kpi(1,8,inti_v,inti_a, inti_ba)=delta_range(intc1)/pi*180;
+kpi(2,8,inti_v,inti_a, inti_ba)=delta_range(intc2)/pi*180;
 
 %9: dMz/dbeta@lim
-kpi(1,9,inti_v,inti_a)=stability_table(intr1,intc1,inti_v,inti_a);
-kpi(2,9,inti_v,inti_a)=stability_table(intr2,intc2,inti_v,inti_a);
+kpi(1,9,inti_v,inti_a, inti_ba)=stability_table(intr1,intc1,inti_v,inti_a, inti_ba);
+kpi(2,9,inti_v,inti_a, inti_ba)=stability_table(intr2,intc2,inti_v,inti_a, inti_ba);
 
 % find "trim" point. moves along constant delta lines and gives back the
 % point with highest lateral acceleration and one beta step after crossing
@@ -103,14 +103,14 @@ ym_last=0;
 ym_curr=0;
 
 for kpi_inti_d=1:max(size(delta_range))
-  ym_curr=ym_table(max(size(beta_range)),kpi_inti_d,inti_v,inti_a);
+  ym_curr=ym_table(max(size(beta_range)),kpi_inti_d,inti_v,inti_a, inti_ba);
   ym_last=ym_curr;
   for kpi_inti_b=flip(1:(max(size(beta_range))-1))
       ym_last=ym_curr;
-      ym_curr=ym_table(kpi_inti_b,kpi_inti_d,inti_v,inti_a)*clean_table(kpi_inti_b,kpi_inti_d,inti_v,inti_a);
+      ym_curr=ym_table(kpi_inti_b,kpi_inti_d,inti_v,inti_a, inti_ba)*clean_table(kpi_inti_b,kpi_inti_d,inti_v,inti_a, inti_ba);
       
       if ym_curr*ym_last <0
-          ay_curr=ay_table(kpi_inti_b,kpi_inti_d,inti_v,inti_a);
+          ay_curr=ay_table(kpi_inti_b,kpi_inti_d,inti_v,inti_a, inti_ba);
       end
       
       if ay_curr>ay_last
@@ -127,14 +127,14 @@ ym_last=0;
 ym_curr=0;
 
 for kpi_inti_d=1:max(size(delta_range))
-  ym_curr=ym_table(max(size(beta_range)),kpi_inti_d,inti_v,inti_a)*clean_table(kpi_inti_b,kpi_inti_d,inti_v,inti_a);
+  ym_curr=ym_table(max(size(beta_range)),kpi_inti_d,inti_v,inti_a, inti_ba)*clean_table(kpi_inti_b,kpi_inti_d,inti_v,inti_a, inti_ba);
   ym_last=ym_curr;
   for kpi_inti_b=2:max(size(beta_range))
       ym_last=ym_curr;
-      ym_curr=ym_table(kpi_inti_b,kpi_inti_d,inti_v,inti_a);
+      ym_curr=ym_table(kpi_inti_b,kpi_inti_d,inti_v,inti_a, inti_ba);
       
       if ym_curr*ym_last <0
-          ay_curr=ay_table(kpi_inti_b,kpi_inti_d,inti_v,inti_a);
+          ay_curr=ay_table(kpi_inti_b,kpi_inti_d,inti_v,inti_a, inti_ba);
       end
       
       if ay_curr<ay_last
@@ -147,47 +147,47 @@ end
 
 
 %10: ay@trim
-trim_1_fac_over=abs(ym_table(intr1+1,intc1,inti_v,inti_a))/(abs(ym_table(intr1+1,intc1,inti_v,inti_a))+abs(ym_table(intr1,intc1,inti_v,inti_a)));
-trim_1_fac_under=abs(ym_table(intr1,intc1,inti_v,inti_a))/(abs(ym_table(intr1+1,intc1,inti_v,inti_a))+abs(ym_table(intr1,intc1,inti_v,inti_a)));
-kpi(1,10,inti_v,inti_a)=trim_1_fac_under*ay_table(intr1+1,intc1,inti_v,inti_a)+trim_1_fac_over*ay_table(intr1,intc1,inti_v,inti_a);
+trim_1_fac_over=abs(ym_table(intr1+1,intc1,inti_v,inti_a, inti_ba))/(abs(ym_table(intr1+1,intc1,inti_v,inti_a, inti_ba))+abs(ym_table(intr1,intc1,inti_v,inti_a, inti_ba)));
+trim_1_fac_under=abs(ym_table(intr1,intc1,inti_v,inti_a, inti_ba))/(abs(ym_table(intr1+1,intc1,inti_v,inti_a, inti_ba))+abs(ym_table(intr1,intc1,inti_v,inti_a, inti_ba)));
+kpi(1,10,inti_v,inti_a, inti_ba)=trim_1_fac_under*ay_table(intr1+1,intc1,inti_v,inti_a, inti_ba)+trim_1_fac_over*ay_table(intr1,intc1,inti_v,inti_a, inti_ba);
 
-trim_2_fac_over=abs(ym_table(intr2-1,intc2,inti_v,inti_a))/(abs(ym_table(intr2-1,intc2,inti_v,inti_a))+abs(ym_table(intr2,intc2,inti_v,inti_a)));
-trim_2_fac_under=abs(ym_table(intr2,intc2,inti_v,inti_a))/(abs(ym_table(intr2-1,intc2,inti_v,inti_a))+abs(ym_table(intr2,intc2,inti_v,inti_a)));
-kpi(2,10,inti_v,inti_a)=trim_2_fac_under*ay_table(intr2-1,intc2,inti_v,inti_a)+trim_2_fac_over*ay_table(intr2,intc2,inti_v,inti_a);
+trim_2_fac_over=abs(ym_table(intr2-1,intc2,inti_v,inti_a, inti_ba))/(abs(ym_table(intr2-1,intc2,inti_v,inti_a, inti_ba))+abs(ym_table(intr2,intc2,inti_v,inti_a, inti_ba)));
+trim_2_fac_under=abs(ym_table(intr2,intc2,inti_v,inti_a, inti_ba))/(abs(ym_table(intr2-1,intc2,inti_v,inti_a, inti_ba))+abs(ym_table(intr2,intc2,inti_v,inti_a, inti_ba)));
+kpi(2,10,inti_v,inti_a, inti_ba)=trim_2_fac_under*ay_table(intr2-1,intc2,inti_v,inti_a, inti_ba)+trim_2_fac_over*ay_table(intr2,intc2,inti_v,inti_a, inti_ba);
 
 %11: SAf@trim
-kpi(1,11,inti_v,inti_a)=(trim_1_fac_under*sa_f_table(intr1+1, intc1, inti_v,inti_a)+trim_1_fac_over*sa_f_table(intr1, intc1, inti_v,inti_a))/pi*180;
-kpi(2,11,inti_v,inti_a)=(trim_2_fac_under*sa_f_table(intr2-1, intc2, inti_v,inti_a)+trim_2_fac_over*sa_f_table(intr2, intc2, inti_v,inti_a))/pi*180;
+kpi(1,11,inti_v,inti_a, inti_ba)=(trim_1_fac_under*sa_f_table(intr1+1, intc1, inti_v,inti_a, inti_ba)+trim_1_fac_over*sa_f_table(intr1, intc1, inti_v,inti_a, inti_ba))/pi*180;
+kpi(2,11,inti_v,inti_a, inti_ba)=(trim_2_fac_under*sa_f_table(intr2-1, intc2, inti_v,inti_a, inti_ba)+trim_2_fac_over*sa_f_table(intr2, intc2, inti_v,inti_a, inti_ba))/pi*180;
 
 %12: SAr@trim
-kpi(1,12,inti_v,inti_a)=(trim_1_fac_under*sa_r_table(intr1+1, intc1, inti_v,inti_a)+trim_1_fac_over*sa_r_table(intr1, intc1, inti_v,inti_a))/pi*180;
-kpi(2,12,inti_v,inti_a)=(trim_2_fac_under*sa_r_table(intr2-1, intc2, inti_v,inti_a)+trim_2_fac_over*sa_r_table(intr2, intc2, inti_v,inti_a))/pi*180;
+kpi(1,12,inti_v,inti_a, inti_ba)=(trim_1_fac_under*sa_r_table(intr1+1, intc1, inti_v,inti_a, inti_ba)+trim_1_fac_over*sa_r_table(intr1, intc1, inti_v,inti_a, inti_ba))/pi*180;
+kpi(2,12,inti_v,inti_a, inti_ba)=(trim_2_fac_under*sa_r_table(intr2-1, intc2, inti_v,inti_a, inti_ba)+trim_2_fac_over*sa_r_table(intr2, intc2, inti_v,inti_a, inti_ba))/pi*180;
 
 %13: SAdiff@trim
-kpi(1,13,inti_v,inti_a)=kpi(1,11,inti_v,inti_a)-kpi(1,12,inti_v,inti_a);
-kpi(2,13,inti_v,inti_a)=kpi(2,11,inti_v,inti_a)-kpi(2,12,inti_v,inti_a);
+kpi(1,13,inti_v,inti_a, inti_ba)=kpi(1,11,inti_v,inti_a, inti_ba)-kpi(1,12,inti_v,inti_a, inti_ba);
+kpi(2,13,inti_v,inti_a, inti_ba)=kpi(2,11,inti_v,inti_a, inti_ba)-kpi(2,12,inti_v,inti_a, inti_ba);
 
 %14: beta@trim
-kpi(1,14,inti_v,inti_a)=(trim_1_fac_under*beta_range(intr1+1)+trim_1_fac_over*beta_range(intr1))/pi*180;
-kpi(2,14,inti_v,inti_a)=(trim_2_fac_under*beta_range(intr2-1)+trim_2_fac_over*beta_range(intr2))/pi*180;
+kpi(1,14,inti_v,inti_a, inti_ba)=(trim_1_fac_under*beta_range(intr1+1)+trim_1_fac_over*beta_range(intr1))/pi*180;
+kpi(2,14,inti_v,inti_a, inti_ba)=(trim_2_fac_under*beta_range(intr2-1)+trim_2_fac_over*beta_range(intr2))/pi*180;
 
 %15: delta@trim
-kpi(1,15,inti_v,inti_a)=delta_range(intc1)/pi*180;
-kpi(2,15,inti_v,inti_a)=delta_range(intc2)/pi*180;
+kpi(1,15,inti_v,inti_a, inti_ba)=delta_range(intc1)/pi*180;
+kpi(2,15,inti_v,inti_a, inti_ba)=delta_range(intc2)/pi*180;
 
 %16: dMz/dbeta@trim
-kpi(1,16,inti_v,inti_a)=trim_1_fac_under*stability_table(intr1+1,intc1,inti_v,inti_a)+trim_1_fac_over*stability_table(intr1,intc1,inti_v,inti_a);
-kpi(2,16,inti_v,inti_a)=trim_2_fac_under*stability_table(intr2-1,intc2,inti_v,inti_a)+trim_2_fac_over*stability_table(intr2,intc2,inti_v,inti_a);
+kpi(1,16,inti_v,inti_a, inti_ba)=trim_1_fac_under*stability_table(intr1+1,intc1,inti_v,inti_a, inti_ba)+trim_1_fac_over*stability_table(intr1,intc1,inti_v,inti_a, inti_ba);
+kpi(2,16,inti_v,inti_a, inti_ba)=trim_2_fac_under*stability_table(intr2-1,intc2,inti_v,inti_a, inti_ba)+trim_2_fac_over*stability_table(intr2,intc2,inti_v,inti_a, inti_ba);
 
 %find point of origin (0,0)
 intr1=find(beta_range==min(abs(beta_range)));
 intc1=find(delta_range==min(abs(delta_range)));
 
 %17: dMz/ddelta@straight
-kpi(1,17,inti_v,inti_a)=control_moment_table(intr1,intc1,inti_v,inti_a);
+kpi(1,17,inti_v,inti_a, inti_ba)=control_moment_table(intr1,intc1,inti_v,inti_a, inti_ba);
 
 %18: dMz/dbeta@straight
-kpi(1,18,inti_v,inti_a)=stability_table(intr1,intc1,inti_v,inti_a);
+kpi(1,18,inti_v,inti_a, inti_ba)=stability_table(intr1,intc1,inti_v,inti_a, inti_ba);
 
 %19 day/ddelta@straight
-kpi(1,19,inti_v,inti_a)=control_force_table(intr1,intc1,inti_v,inti_a);
+kpi(1,19,inti_v,inti_a, inti_ba)=control_force_table(intr1,intc1,inti_v,inti_a, inti_ba);

@@ -13,45 +13,45 @@ clean_table=zeros(beta_steps,delta_steps);
 
 for intc=1:sz(2)
     for intr=1:round(sz(1)/2)
-        ay_curr=ay_table(intr,intc,inti_v,inti_a);
+        ay_curr=ay_table(intr,intc,inti_v,inti_a,inti_ba);
 
         if intr==1
             ay_last=ay_curr;
         else
-            ay_last=ay_table(intr-1,intc,inti_v,inti_a);
+            ay_last=ay_table(intr-1,intc,inti_v,inti_a,inti_ba);
         end
 
         if intr==sz(1)
             ay_next=ay_curr;
         else
-            ay_next=ay_table(intr+1,intc,inti_v,inti_a);
+            ay_next=ay_table(intr+1,intc,inti_v,inti_a,inti_ba);
         end
 
         if ay_next>ay_curr 
-            clean_table(intr,intc,inti_v,inti_a)=nan;
+            clean_table(intr,intc,inti_v,inti_a,inti_ba)=nan;
         else
-            clean_table(intr,intc,inti_v,inti_a)=1;
+            clean_table(intr,intc,inti_v,inti_a,inti_ba)=1;
         end
     end
     for intr=round(sz(1)/2):sz(1)
-        ay_curr=ay_table(intr,intc,inti_v,inti_a);
+        ay_curr=ay_table(intr,intc,inti_v,inti_a,inti_ba);
 
         if intr==1
             ay_last=ay_curr;
         else
-            ay_last=ay_table(intr-1,intc,inti_v,inti_a);
+            ay_last=ay_table(intr-1,intc,inti_v,inti_a,inti_ba);
         end
 
         if intr==sz(1)
             ay_next=ay_curr;
         else
-            ay_next=ay_table(intr+1,intc,inti_v,inti_a);
+            ay_next=ay_table(intr+1,intc,inti_v,inti_a,inti_ba);
         end
 
         if ay_last<ay_curr 
-            clean_table(intr,intc,inti_v,inti_a)=nan;
+            clean_table(intr,intc,inti_v,inti_a,inti_ba)=nan;
         else
-            clean_table(intr,intc,inti_v,inti_a)=1;
+            clean_table(intr,intc,inti_v,inti_a,inti_ba)=1;
         end
     end
 end

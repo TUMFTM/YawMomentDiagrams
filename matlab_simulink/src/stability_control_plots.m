@@ -12,25 +12,25 @@ delta_step=delta_range(2)-delta_range(1);
 for intc3=1:sz(2)
     for intr3=1:sz(1)
         if intr3==sz(1)
-            stability_1(intr3, intc3, inti_v, inti_a)=NaN;
-            sideslip_damping_1(intr3, intc3, inti_v, inti_a)=NaN;
+            stability_1(intr3, intc3, inti_v, inti_a,inti_ba)=NaN;
+            sideslip_damping_1(intr3, intc3, inti_v, inti_a,inti_ba)=NaN;
             
         else
-            stability_1(intr3, intc3, inti_v, inti_a)=(ym_table(intr3+1, intc3, inti_v, inti_a)...
-            -ym_table(intr3, intc3, inti_v, inti_a))/beta_step/180*pi;
-            sideslip_damping_1(intr3, intc3, inti_v, inti_a)=(ay_table(intr3+1, intc3, inti_v, inti_a)...
-            -ay_table(intr3, intc3, inti_v, inti_a))/beta_step/180*pi;
+            stability_1(intr3, intc3, inti_v, inti_a)=(ym_table(intr3+1, intc3, inti_v, inti_a,inti_ba)...
+            -ym_table(intr3, intc3, inti_v, inti_a,inti_ba))/beta_step/180*pi;
+            sideslip_damping_1(intr3, intc3, inti_v, inti_a)=(ay_table(intr3+1, intc3, inti_v, inti_a,inti_ba)...
+            -ay_table(intr3, intc3, inti_v, inti_a,inti_ba))/beta_step/180*pi;
         end
         
         if intr3==1
-            stability_2(intr3, intc3, inti_v, inti_a)=NaN;
-            sideslip_damping_2(intr3, intc3, inti_v, inti_a)=NaN;
+            stability_2(intr3, intc3, inti_v, inti_a,inti_ba)=NaN;
+            sideslip_damping_2(intr3, intc3, inti_v, inti_a,inti_ba)=NaN;
             
         else
-            stability_2(intr3, intc3, inti_v, inti_a)=(ym_table(intr3, intc3, inti_v, inti_a)...
-            -ym_table(intr3-1, intc3, inti_v, inti_a))/beta_step/180*pi;
-            sideslip_damping_2(intr3, intc3, inti_v, inti_a)=(ay_table(intr3, intc3, inti_v, inti_a)...
-            -ay_table(intr3-1, intc3, inti_v, inti_a))/beta_step/180*pi;
+            stability_2(intr3, intc3, inti_v, inti_a,inti_ba)=(ym_table(intr3, intc3, inti_v, inti_a,inti_ba)...
+            -ym_table(intr3-1, intc3, inti_v, inti_a,inti_ba))/beta_step/180*pi;
+            sideslip_damping_2(intr3, intc3, inti_v, inti_a,inti_ba)=(ay_table(intr3, intc3, inti_v, inti_a,inti_ba)...
+            -ay_table(intr3-1, intc3, inti_v, inti_a,inti_ba))/beta_step/180*pi;
 
         end
         
@@ -45,46 +45,46 @@ sideslip_damping_table=(sideslip_damping_1+sideslip_damping_2)./2;
 for intr3=1:sz(1)
     for intc3=1:sz(2)
         if intc3==sz(2)
-            control_moment_1(intr3, intc3, inti_v, inti_a)=NaN;
-            control_force_1(intr3, intc3, inti_v, inti_a)=NaN;
+            control_moment_1(intr3, intc3, inti_v, inti_a,inti_ba)=NaN;
+            control_force_1(intr3, intc3, inti_v, inti_a,inti_ba)=NaN;
             
         else
-            control_moment_1(intr3, intc3, inti_v, inti_a)=(ym_table(intr3, intc3+1, inti_v, inti_a)...
-            -ym_table(intr3, intc3, inti_v, inti_a))/delta_step/180*pi;
-            control_force_1(intr3, intc3, inti_v, inti_a)=(ay_table(intr3, intc3+1, inti_v, inti_a)...
-            -ay_table(intr3, intc3, inti_v, inti_a))/delta_step/180*pi;
+            control_moment_1(intr3, intc3, inti_v, inti_a,inti_ba)=(ym_table(intr3, intc3+1, inti_v, inti_a,inti_ba)...
+            -ym_table(intr3, intc3, inti_v, inti_a,inti_ba))/delta_step/180*pi;
+            control_force_1(intr3, intc3, inti_v, inti_a,inti_ba)=(ay_table(intr3, intc3+1, inti_v, inti_a,inti_ba)...
+            -ay_table(intr3, intc3, inti_v, inti_a,inti_ba))/delta_step/180*pi;
            
         end
         
         if intc3==1
-            control_moment_2(intr3, intc3, inti_v, inti_a)=NaN;
-            control_force_2(intr3, intc3, inti_v, inti_a)=NaN;
+            control_moment_2(intr3, intc3, inti_v, inti_a,inti_ba)=NaN;
+            control_force_2(intr3, intc3, inti_v, inti_a,inti_ba)=NaN;
             
         else
-            control_moment_2(intr3, intc3, inti_v, inti_a)=(ym_table(intr3, intc3, inti_v, inti_a)...
-            -ym_table(intr3, intc3-1, inti_v, inti_a))/delta_step/180*pi;
-            control_force_2(intr3, intc3, inti_v, inti_a)=(ay_table(intr3, intc3, inti_v, inti_a)...
-            -ay_table(intr3, intc3-1, inti_v, inti_a))/delta_step/180*pi;
+            control_moment_2(intr3, intc3, inti_v, inti_a,inti_ba)=(ym_table(intr3, intc3, inti_v, inti_a,inti_ba)...
+            -ym_table(intr3, intc3-1, inti_v, inti_a,inti_ba))/delta_step/180*pi;
+            control_force_2(intr3, intc3, inti_v, inti_a,inti_ba)=(ay_table(intr3, intc3, inti_v, inti_a,inti_ba)...
+            -ay_table(intr3, intc3-1, inti_v, inti_a,inti_ba))/delta_step/180*pi;
         end
         
      end
 end
 
-control_moment_table(:,:,inti_v,inti_a)=(control_moment_1(:,:,inti_v,inti_a)+control_moment_2(:,:,inti_v,inti_a))./2;
-control_force_table(:,:,inti_v,inti_a)=(control_force_1(:,:,inti_v,inti_a)+control_force_2(:,:,inti_v,inti_a))./2;
+control_moment_table(:,:,inti_v,inti_a,inti_ba)=(control_moment_1(:,:,inti_v,inti_a,inti_ba)+control_moment_2(:,:,inti_v,inti_a,inti_ba))./2;
+control_force_table(:,:,inti_v,inti_a,inti_ba)=(control_force_1(:,:,inti_v,inti_a,inti_ba)+control_force_2(:,:,inti_v,inti_a,inti_ba))./2;
 
 
 %plot stability diagram
 figure(1)
-[c,h]=contourf(ay_table(:,:,inti_v,inti_a).*clean_table(:,:,inti_v,inti_a),...
-    ym_table(:,:,inti_v,inti_a).*clean_table(:,:,inti_v,inti_a),...
-    stability_table(:,:,inti_v,inti_a).*clean_table(:,:,inti_v,inti_a),20,'ShowText','on');
+[c,h]=contourf(ay_table(:,:,inti_v,inti_a,inti_ba).*clean_table(:,:,inti_v,inti_a,inti_ba),...
+    ym_table(:,:,inti_v,inti_a,inti_ba).*clean_table(:,:,inti_v,inti_a,inti_ba),...
+    stability_table(:,:,inti_v,inti_a,inti_ba).*clean_table(:,:,inti_v,inti_a,inti_ba),20,'ShowText','on');
 h.LevelList=round(h.LevelList,0);
 clabel(c,h, 'FontSize', 8);
 xlabel('lateral acceleration [m/s^{2}]')
 ylabel('yaw moment [Nm]')
 grid on
-title(['stability @ ', num2str(v), 'mps, ', num2str(ax), 'mps2'])
+title(['stability @ ', num2str(v), 'mps, ', num2str(ax), 'mps2_banking', num2str(abs(banking))])
 xlim([-x_lim, x_lim])
 ylim([-y_lim, y_lim])
 cb = colorbar;
@@ -92,15 +92,15 @@ ylabel(cb, 'yaw moment per vehicle slip angle [Nm/deg]')
 
 %plot sideslip damping diagram
 figure(2)
-[c,h]=contourf(ay_table(:,:,inti_v,inti_a).*clean_table(:,:,inti_v,inti_a),...
-    ym_table(:,:,inti_v,inti_a).*clean_table(:,:,inti_v,inti_a),...
-    sideslip_damping_table(:,:,inti_v,inti_a).*clean_table(:,:,inti_v,inti_a),20,'ShowText','on');
+[c,h]=contourf(ay_table(:,:,inti_v,inti_a,inti_ba).*clean_table(:,:,inti_v,inti_a,inti_ba),...
+    ym_table(:,:,inti_v,inti_a,inti_ba).*clean_table(:,:,inti_v,inti_a,inti_ba),...
+    sideslip_damping_table(:,:,inti_v,inti_a,inti_ba).*clean_table(:,:,inti_v,inti_a,inti_ba),20,'ShowText','on');
 h.LevelList=round(h.LevelList,0);
 clabel(c,h, 'FontSize', 8);
 xlabel('lateral acceleration [m/s^{2}]')
 ylabel('yaw moment [Nm]')
 grid on
-title(['sideslip damping @ ', num2str(v), 'mps, ', num2str(ax), 'mps2'])
+title(['sideslip damping @ ', num2str(v), 'mps, ', num2str(ax), 'mps2_banking', num2str(abs(banking))])
 xlim([-x_lim, x_lim])
 ylim([-y_lim, y_lim])
 cb = colorbar;
@@ -109,15 +109,15 @@ ylabel(cb, 'lateral acceleration per vehicle slip angle [Nm/deg]')
 
 %plot control moment diagram
 figure(3)
-[c,h]=contourf(ay_table(:,:,inti_v,inti_a).*clean_table(:,:,inti_v,inti_a),...
-    ym_table(:,:,inti_v,inti_a).*clean_table(:,:,inti_v,inti_a),...
-    control_moment_table(:,:,inti_v,inti_a).*clean_table(:,:,inti_v,inti_a),20);
+[c,h]=contourf(ay_table(:,:,inti_v,inti_a,inti_ba).*clean_table(:,:,inti_v,inti_a,inti_ba),...
+    ym_table(:,:,inti_v,inti_a,inti_ba).*clean_table(:,:,inti_v,inti_a,inti_ba),...
+    control_moment_table(:,:,inti_v,inti_a,inti_ba).*clean_table(:,:,inti_v,inti_a,inti_ba),20);
 h.LevelList=round(h.LevelList,0);
 clabel(c,h, 'FontSize', 8);
 xlabel('lateral acceleration [m/s^{2}]')
 ylabel('yaw moment [Nm]')
 grid on
-title(['control moment @ ', num2str(v), 'mps, ', num2str(ax), 'mps2'])
+title(['control moment @ ', num2str(v), 'mps, ', num2str(ax), 'mps2_banking', num2str(abs(banking))])
 xlim([-x_lim, x_lim])
 ylim([-y_lim, y_lim])
 cb = colorbar;
@@ -125,15 +125,15 @@ ylabel(cb, 'yaw moment per steering angle [Nm/deg]')
 
 %plot control force diagram
 figure(4)
-[c,h]=contourf(ay_table(:,:,inti_v,inti_a).*clean_table(:,:,inti_v,inti_a),...
-    ym_table(:,:,inti_v,inti_a).*clean_table(:,:,inti_v,inti_a),...
-    control_force_table(:,:,inti_v,inti_a).*clean_table(:,:,inti_v,inti_a),20);
+[c,h]=contourf(ay_table(:,:,inti_v,inti_a,inti_ba).*clean_table(:,:,inti_v,inti_a,inti_ba),...
+    ym_table(:,:,inti_v,inti_a,inti_ba).*clean_table(:,:,inti_v,inti_a,inti_ba),...
+    control_force_table(:,:,inti_v,inti_a,inti_ba).*clean_table(:,:,inti_v,inti_a,inti_ba),20);
 h.LevelList=round(h.LevelList,1);
 clabel(c,h, 'FontSize', 8);
 xlabel('lateral acceleration [m/s^{2}]')
 ylabel('yaw moment [Nm]')
 grid on
-title(['control force @ ', num2str(v), 'mps, ', num2str(ax), 'mps2'])
+title(['control force @ ', num2str(v), 'mps, ', num2str(ax), 'mps2_banking', num2str(abs(banking))])
 xlim([-x_lim, x_lim])
 ylim([-y_lim, y_lim])
 cb = colorbar;
