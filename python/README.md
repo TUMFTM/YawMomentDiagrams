@@ -12,7 +12,7 @@
 2. Install the required packages via ``pip install -r requirements.txt``
 3. Install the TUM_vehicle_dynamics.whl file located in ``./vehicledynamics_wheel`` via ``pip install tum_veh... .whl``
 4. Modify the parameter files located in the ``./params`` folder.
-5. Run ``main_calcYMD.m``. Output files are created in the ``output`` folder (folder is created if it does not exist).
+5. Run ``main_calcYMD.py``. Output files are created in the ``output`` folder (folder is created if it does not exist).
 
 ## Analyzing the results
 A general description is provided in the top-level README.md of this repository at "Analysis of generated Yaw Moment Diagrams".

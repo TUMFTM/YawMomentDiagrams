@@ -1,4 +1,4 @@
-import src
+import kpi_handling
 
 """
 Python version: 3.8
@@ -9,7 +9,7 @@ Documentation:
 Main script to plot and compare KPI
 
 Requirements:
-1. at least one path containing a output.mat must be given 
+1. at least one path containing an output.mat must be given 
 2. if given multiple path, the different albums must be created with the same album config file (see main_calcYMD)
 """
 
@@ -24,6 +24,6 @@ path.append('/home/frederik/Dokumente/Plots3')
 
 # ______________________________________________________________________________________________________________________
 
-kpi, path_split, data = src.kpi_handling.load(path)
-fig = src.kpi_handling.bargraph_plotly(kpi, direction, path_split, data)
+kpi, path_split, data = kpi_handling.load(path)
+fig = kpi_handling.bargraph_plotly(kpi, direction, path_split, data)
 fig.show()
