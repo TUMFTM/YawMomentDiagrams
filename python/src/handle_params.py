@@ -38,8 +38,8 @@ def load(plot_config_file, album_config_file, sim_config_file, veh_config_file, 
     veh_config_file = veh_config_file + ".toml"
 
     # assemble path to param files
-    path_root2module = os.path.dirname(os.path.abspath(__file__)).split('python')[0]
-    path_params = os.path.join(path_root2module, 'python/params/')
+    path_root2module = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    path_params = os.path.join(path_root2module, 'params')
     path_params_copy = os.path.join(folder, 'params')
 
     # read plot config file

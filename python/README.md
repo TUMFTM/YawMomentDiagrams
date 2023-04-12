@@ -1,6 +1,7 @@
 # Generation of Yaw Moment Diagrams in Python
 
 ## List of software components
+* `docker`: Contains the Dockerfile and bash scripts to build and launch the docker.
 * `params`: Contains the parameter files to configure the simulation
 * `src`: Contains the subscripts of main_calcYMD.m and additional helper scripts
 * `vehicledynamics_wheel`: Contains the Python wheel which allows to include the vehicle dynamics model in Python
@@ -8,11 +9,12 @@
 **Note: The provided python wheel can only be used with Python running on Linux!**
 
 ## How to generate Yaw Moment Diagrams
-1. Create a virtual environment
-2. Install the required packages via ``pip install -r requirements.txt``
-3. Install the TUM_vehicle_dynamics.whl file located in ``./vehicledynamics_wheel`` via ``pip install tum_veh... .whl``
-4. Modify the parameter files located in the ``./params`` folder.
-5. Run ``main_calcYMD.py``. Output files are created in the ``output`` folder (folder is created if it does not exist).
+1. Run `bash docker/build_docker.sh`to build the docker image.
+2. Afterwards, run `bash docker/launch_docker.sh`to launch the docker container.
+2. Install the required packages within the docker container via `pip install -r requirements.txt`
+3. Install the TUM_vehicle_dynamics.whl via `pip install ./vehicledynamics_wheel/tum_veh... .whl`
+4. Modify the parameter files located in the `./params` folder.
+5. Run `python3 main_calcYMD.py`. Output files are created in the `output` folder (folder is created if it does not exist).
 
 ## Analyzing the results
 A general description is provided in the top-level README.md of this repository at "Analysis of generated Yaw Moment Diagrams".
